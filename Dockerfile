@@ -21,9 +21,12 @@ RUN pip install --no-cache-dir -r /app/requirements.txt
 # Copy the rest of the code....skipping directories that may contain data
 COPY ./src /app/code
 
-# set python path and working dir 
+# Copy the gunicorn script
+COPY gunicorn.sh /app/code/gunicorn.sh
+
+# set python path and working dir
 ENV PYTHONPATH=/app/code
 WORKDIR /app/code
 
 # run the flask app!
-ENTRYPOINT ["sh", "-x", "gunicorn.sh"]
+ENTRYPOINT ["sh", "-x", "./gunicorn.sh"]
