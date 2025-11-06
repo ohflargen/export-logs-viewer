@@ -31,9 +31,12 @@ COPY ./src /app/code
 COPY ./data /app/data
 COPY ./reqFiles /app/reqFiles
 
-# set python path and working dir 
+# Copy the gunicorn script
+COPY gunicorn.sh /app/code/gunicorn.sh
+
+# set python path and working dir
 ENV PYTHONPATH=/app/code
 WORKDIR /app/code
 
 # run the flask app!
-ENTRYPOINT ["sh", "-x", "gunicorn.sh"]
+ENTRYPOINT ["sh", "-x", "./gunicorn.sh"]
