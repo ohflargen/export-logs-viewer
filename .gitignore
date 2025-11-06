@@ -1,0 +1,13 @@
+# Ignore all files named...
+.DS_Store
+Thumbs.db
+aif-usr-p-itaia3i-98be-data-access.json
+aif-usr-p-itaia3i-98be-mkw13.json
+patient_clinic_numbers.csv
+patient_ids_finetuning_2018_2019.csv
+*.zip
+*.dcm
+
+# Ignore all directories named...
+.vscode/
+__pycache__/
