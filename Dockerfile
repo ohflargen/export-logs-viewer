@@ -16,20 +16,10 @@ RUN pip config set global.cert /etc/ssl/certs/ca-certificates.crt
 COPY ./requirements/requirements.txt /app/requirements.txt
 
 # Install the requirements
-# Note: DGL requires a specific CUDA version, so we use the extra index URL for DGL
-# Ensure that the CUDA version matches your environment; here we assume CUDA 12.1
-# If you are using a different version, change the URL accordingly.
-# For example, for CUDA 11.8, use: https://data.dgl.ai/wheels/cu118/repo.html
-# For CUDA 12.0, use: https://data.dgl.ai/wheels/cu120/repo.html
-RUN pip install --no-cache-dir \
-            --extra-index-url https://data.dgl.ai/wheels/cu121/repo.html \
-            --trusted-host data.dgl.ai \
-            -r /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
-            # Copy the rest of the code....skipping directories that may contain data
+# Copy the rest of the code....skipping directories that may contain data
 COPY ./src /app/code
-COPY ./data /app/data
-COPY ./reqFiles /app/reqFiles
 
 # set python path and working dir 
 ENV PYTHONPATH=/app/code
