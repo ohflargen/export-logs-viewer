@@ -4,6 +4,7 @@ import pandas as pd
 from google.cloud import bigquery
 
 app = dash.Dash(__name__)
+server = app.server
 
 # BigQuery client
 client = bigquery.Client()
